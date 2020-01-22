@@ -35,3 +35,15 @@ describe DockingStation do
     expect(subject.dock(bike)).to eq bike
   end
 end
+
+# feature test 
+describe DockingStation do
+    it {is_expected.to respond_to (:error)}
+end
+
+# unit test 
+describe DockingStation do
+  
+  dock = subject.release_bike
+  expect(dock).to raise_error if Bike.empty? 
+end
