@@ -12,20 +12,26 @@ describe DockingStation do
   end
 end
 
+# feature test - checking dock method accepts 1 argument
 describe DockingStation do 
-  it 'docks bike in docking station' do
-    docking_station = subject.dock(:bike)
-    expect(docking_station).to respond_to 
-  end
+  it {is_expected.to respond_to(:dock).with(1).argument}
 end
 
-=begin
+# unit test - checking that the dock method stores a bike
 describe DockingStation do
-  it 'dock method stores bike atribute in dockingstation class object' do
-    station = DockingStation.new
+  it {is_expected.to respond_to(:Bike)}
+=begin
+  'stores a bike' do
+    docking_station = subject.dock(:bike)
+    expect(docking_station).to eq :bike
+=end
+end
+
+# checking the dock method works overall
+describe DockingStation do
+  it 'dock method stores bike attribute in dockingstation class object' do
+    #station = DockingStation.new
     bike = Bike.new 
-    station.dock(bike)
-    expect(station[:bike]).to eq(bike)
+    expect(subject.dock(bike)).to eq bike
   end
 end
-=end
